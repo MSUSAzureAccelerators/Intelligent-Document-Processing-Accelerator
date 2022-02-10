@@ -1,0 +1,19 @@
+{
+  "profileName": "fsihack",
+  "jobId": "b3f5c83c-6133-4f47-89f9-54bcb56678fe",
+  "projectId": "94480.7385964072",
+  "time": "2021-09-14T13:56:11.418Z",
+  "log": [
+    "Creating Azure resources...",
+    "Checking the Existence of the Resource Group ...",
+    "Use the Resource Group: fsihack at eastus",
+    "> Creating App Registration ...",
+    "Start to add password for App, Id : 80a3954f-ff49-40b3-928b-ed4276573bc9",
+    "> Create App Registration Success! ID: 80a3954f-ff49-40b3-928b-ed4276573bc9",
+    "Deploying Web App Resource ...",
+    "Deploying Bot Resource ...",
+    "Deploying Luis Authoring Resource ...",
+    "Deploying Luis Resource ...",
+    "Provisioning completed successfully!"
+  ]
+}

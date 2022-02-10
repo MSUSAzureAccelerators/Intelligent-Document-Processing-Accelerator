@@ -1,0 +1,2112 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscription_id": {
+            "defaultValue": "required_subscription_id",
+            "type": "String"
+        },
+        "workflows_logicapp_name": {
+            "defaultValue": "required_new_logicapp_name",
+            "type": "String"
+        },
+        "connections_formrecognizer_name": {
+            "defaultValue": "formrecognizer",
+            "type": "String"
+        },
+        "connections_azureblob_name": {
+            "defaultValue": "azureblob",
+            "type": "String"
+        },
+        "connections_documentdb_name": {
+            "defaultValue": "documentdb",
+            "type": "String"
+        },
+        "connections_azureblob_1_name": {
+            "defaultValue": "azureblob-1",
+            "type": "String"
+        },
+        "connections_azureblob_2_name": {
+            "defaultValue": "azureblob-2",
+            "type": "String"
+        },
+        "connections_azureblob_3_name": {
+            "defaultValue": "azureblob-3",
+            "type": "String"
+        },
+        "connections_azureblob_4_name": {
+            "defaultValue": "azureblob-4",
+            "type": "String"
+        },
+        "connections_azureblob_5_name": {
+            "defaultValue": "azureblob-5",
+            "type": "String"
+        },
+        "connections_documentdb_1_name": {
+            "defaultValue": "documentdb-1",
+            "type": "String"
+        },
+        "connections_cognitiveservicescustomvision_name": {
+            "defaultValue": "cognitiveservicescustomvision",
+            "type": "String"
+        },
+        "connections_cognitiveservicescustomvision_1_name": {
+            "defaultValue": "cognitiveservicescustomvision-1",
+            "type": "String"
+        },
+        "connections_cognitiveservicescustomvision_2_name": {
+            "defaultValue": "cognitiveservicescustomvision-2",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "[parameters('connections_azureblob_name')]",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-10-29T19:32:38.425486Z",
+                "changedTime": "2021-11-02T20:53:18.0775251Z",
+                "api": {
+                    "name": "[parameters('connections_azureblob_name')]",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/', parameters('connections_azureblob_name'), '/icon.png')]",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/', parameters('connections_azureblob_name'))]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_1_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "blobstore",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-10-29T19:33:58.8415281Z",
+                "changedTime": "2021-10-29T19:34:07.5634257Z",
+                "api": {
+                    "name": "azureblob",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/azureblob/icon.png",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_1_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_2_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "storage",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-10-29T19:35:11.4634665Z",
+                "changedTime": "2021-11-01T18:15:09.2294626Z",
+                "api": {
+                    "name": "azureblob",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/azureblob/icon.png",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_2_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_3_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "blobtest",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-11-01T18:15:41.0198088Z",
+                "changedTime": "2021-11-01T18:15:47.5403734Z",
+                "api": {
+                    "name": "azureblob",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/azureblob/icon.png",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_3_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_4_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "btest",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-11-01T18:20:08.2633598Z",
+                "changedTime": "2021-11-01T18:20:08.2633598Z",
+                "api": {
+                    "name": "azureblob",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/azureblob/icon.png",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_4_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_5_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "btest",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-11-01T18:20:29.8600153Z",
+                "changedTime": "2021-11-01T18:20:29.8600153Z",
+                "api": {
+                    "name": "azureblob",
+                    "displayName": "Azure Blob Storage",
+                    "description": "Microsoft Azure Storage provides a massively scalable, durable, and highly available storage for data on the cloud, and serves as the data storage solution for modern applications. Connect to Blob Storage to perform various operations such as create, update, get and delete on blobs in your Azure Storage account.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1531/1.0.1531.2596/azureblob/icon.png",
+                    "brandColor": "#804998",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_azureblob_5_name'), '/extensions/proxy/testconnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_cognitiveservicescustomvision_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "testcustomvision",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {},
+                "createdTime": "2021-11-01T18:32:14.8545982Z",
+                "changedTime": "2021-11-01T18:32:14.8545982Z",
+                "api": {
+                    "name": "[parameters('connections_cognitiveservicescustomvision_name')]",
+                    "displayName": "Custom Vision",
+                    "description": "Azure Custom Vision Service is a Microsoft Cognitive Services product for tagging images using your custom computer vision model.",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1481/1.0.1481.2460/', parameters('connections_cognitiveservicescustomvision_name'), '/icon.png')]",
+                    "brandColor": "#1267AE",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/', parameters('connections_cognitiveservicescustomvision_name'))]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_cognitiveservicescustomvision_1_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "cm2",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {
+                    "siteUrl": "https://customvis478816prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/b09ce0fd-4025-4fdd-8eab-d359643c57fb/classify/iterations/latest/url"
+                },
+                "createdTime": "2021-11-01T19:24:50.6122991Z",
+                "changedTime": "2021-11-01T19:24:50.6122991Z",
+                "api": {
+                    "name": "cognitiveservicescustomvision",
+                    "displayName": "Custom Vision",
+                    "description": "Azure Custom Vision Service is a Microsoft Cognitive Services product for tagging images using your custom computer vision model.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1481/1.0.1481.2460/cognitiveservicescustomvision/icon.png",
+                    "brandColor": "#1267AE",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/cognitiveservicescustomvision')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_cognitiveservicescustomvision_2_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "cm3",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {
+                    "siteUrl": "https://customvis478816prediction.cognitiveservices.azure.com/"
+                },
+                "createdTime": "2021-11-01T19:26:34.4663812Z",
+                "changedTime": "2021-11-01T19:26:34.4663812Z",
+                "api": {
+                    "name": "cognitiveservicescustomvision",
+                    "displayName": "Custom Vision",
+                    "description": "Azure Custom Vision Service is a Microsoft Cognitive Services product for tagging images using your custom computer vision model.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1481/1.0.1481.2460/cognitiveservicescustomvision/icon.png",
+                    "brandColor": "#1267AE",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/cognitiveservicescustomvision')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_documentdb_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "cosmos",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-11-01T18:53:02.8161711Z",
+                "changedTime": "2021-11-01T18:53:02.8161711Z",
+                "api": {
+                    "name": "[parameters('connections_documentdb_name')]",
+                    "displayName": "Azure Cosmos DB",
+                    "description": "Azure Cosmos DB is a globally distributed multi-model database service designed to enable you to elastically and independently scale throughput and storage across any number of geographical regions with a comprehensive SLA.",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1530/1.0.1530.2592/', parameters('connections_documentdb_name'), '/icon.png')]",
+                    "brandColor": "#1C3A56",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/', parameters('connections_documentdb_name'))]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_documentdb_name'), '/extensions/proxy/testConnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_documentdb_1_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "cosmosnew",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "createdTime": "2021-11-01T18:54:29.3931431Z",
+                "changedTime": "2021-11-01T18:54:29.3931431Z",
+                "api": {
+                    "name": "documentdb",
+                    "displayName": "Azure Cosmos DB",
+                    "description": "Azure Cosmos DB is a globally distributed multi-model database service designed to enable you to elastically and independently scale throughput and storage across any number of geographical regions with a comprehensive SLA.",
+                    "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1530/1.0.1530.2592/documentdb/icon.png",
+                    "brandColor": "#1C3A56",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/documentdb')]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": [
+                    {
+                        "requestUri": "[concat('https://management.azure.com:443/subscriptions/',parameters('subscription_id'),'/resourceGroups/FSIUC2-478816/providers/Microsoft.Web/connections/', parameters('connections_documentdb_1_name'), '/extensions/proxy/testConnection?api-version=2016-06-01')]",
+                        "method": "get"
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_formrecognizer_name')]",
+            "location": "westus",
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "kind": "V1",
+            "properties": {
+                "displayName": "frhack",
+                "statuses": [
+                    {
+                        "status": "Connected"
+                    }
+                ],
+                "customParameterValues": {},
+                "nonSecretParameterValues": {
+                    "siteUrl": "https://formrec478816subdomain.cognitiveservices.azure.com/"
+                },
+                "createdTime": "2021-11-01T18:50:28.0504654Z",
+                "changedTime": "2021-11-01T18:50:28.0504654Z",
+                "api": {
+                    "name": "[parameters('connections_formrecognizer_name')]",
+                    "displayName": "Form Recognizer",
+                    "description": "Extracts information from forms and images into structured data based on pre-trained models or model created by a set of representative training forms.",
+                    "iconUri": "[concat('https://connectoricons-prod.azureedge.net/releases/v1.0.1528/1.0.1528.2589/', parameters('connections_formrecognizer_name'), '/icon.png')]",
+                    "brandColor": "#0063B1",
+                    "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/', parameters('connections_formrecognizer_name'))]",
+                    "type": "Microsoft.Web/locations/managedApis"
+                },
+                "testLinks": []
+            }
+        },
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_logicapp_name')]",
+            "location": "westus",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/connections', parameters('connections_azureblob_5_name'))]",
+                "[resourceId('Microsoft.Web/connections', parameters('connections_cognitiveservicescustomvision_2_name'))]",
+                "[resourceId('Microsoft.Web/connections', parameters('connections_documentdb_1_name'))]",
+                "[resourceId('Microsoft.Web/connections', parameters('connections_formrecognizer_name'))]"
+            ],
+            "tags": {
+                "DeploymentId": "478816",
+                "LaunchId": "18578",
+                "LaunchType": "ON_DEMAND_LAB",
+                "TemplateId": "3916",
+                "TenantId": "277"
+            },
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "When_a_blob_is_added_or_modified_(properties_only)_(V2)": {
+                            "recurrence": {
+                                "frequency": "Second",
+                                "interval": 5
+                            },
+                            "evaluatedRecurrence": {
+                                "frequency": "Second",
+                                "interval": 5
+                            },
+                            "splitOn": "@triggerBody()",
+                            "metadata": {
+                                "JTJmaW5jb21pbmdkb2Nz": "/incomingdocs"
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "get",
+                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/triggers/batch/onupdatedfile",
+                                "queries": {
+                                    "checkBothCreatedAndModifiedDateTime": false,
+                                    "folderId": "JTJmaW5jb21pbmdkb2Nz",
+                                    "maxFileCount": 1
+                                }
+                            }
+                        }
+                    },
+                    "actions": {
+                        "Classify_an_image_url_(V2)": {
+                            "runAfter": {
+                                "Create_SAS_URI_by_path_(V2)": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": {
+                                    "Url": "@body('Create_SAS_URI_by_path_(V2)')?['WebUrl']"
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['cognitiveservicescustomvision']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/customvision/v3.0/Prediction/@{encodeURIComponent('b09ce0fd-4025-4fdd-8eab-d359643c57fb')}/classify/iterations/@{encodeURIComponent('latest')}/url"
+                            }
+                        },
+                        "Copy_blob_(V2)": {
+                            "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "headers": {
+                                    "ReadFileMetadataFromServer": true
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/copyFile",
+                                "queries": {
+                                    "destination": "/processing/@{triggerBody()?['Name']}",
+                                    "overwrite": true,
+                                    "queryParametersSingleEncoded": true,
+                                    "source": "@triggerBody()?['Path']"
+                                }
+                            }
+                        },
+                        "Copy_blob_(V2)_2": {
+                            "runAfter": {
+                                "For_each": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "headers": {
+                                    "ReadFileMetadataFromServer": true
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/copyFile",
+                                "queries": {
+                                    "destination": "/succeeded/@{body('Copy_blob_(V2)')?['Name']}",
+                                    "overwrite": true,
+                                    "queryParametersSingleEncoded": true,
+                                    "source": "@body('Copy_blob_(V2)')?['Path']"
+                                }
+                            }
+                        },
+                        "Create_SAS_URI_by_path_(V2)": {
+                            "runAfter": {
+                                "Delete_blob_(V2)": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "body": {
+                                    "Permissions": "Read,Write,List"
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "post",
+                                "path": "/v2/datasets/@{encodeURIComponent('AccountNameFromSettings')}/CreateSharedLinkByPath",
+                                "queries": {
+                                    "path": "@body('Copy_blob_(V2)')?['Path']"
+                                }
+                            }
+                        },
+                        "Delete_blob_(V2)": {
+                            "runAfter": {
+                                "Initialize_variable": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "headers": {
+                                    "SkipDeleteIfFileNotFoundOnServer": false
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "delete",
+                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/files/@{encodeURIComponent(encodeURIComponent(triggerBody()?['Id']))}"
+                            }
+                        },
+                        "Delete_blob_(V2)_2": {
+                            "runAfter": {
+                                "Copy_blob_(V2)_2": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "headers": {
+                                    "SkipDeleteIfFileNotFoundOnServer": false
+                                },
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['azureblob_2']['connectionId']"
+                                    }
+                                },
+                                "method": "delete",
+                                "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/files/@{encodeURIComponent(encodeURIComponent(body('Copy_blob_(V2)_2')?['Path']))}"
+                            }
+                        },
+                        "Filter_array": {
+                            "runAfter": {
+                                "Parse_JSON": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Query",
+                            "inputs": {
+                                "from": "@body('Parse_JSON')",
+                                "where": "@greaterOrEquals(item()['probability'], 0.5)"
+                            }
+                        },
+                        "For_each": {
+                            "foreach": "@body('Filter_array')",
+                            "actions": {
+                                "Switch": {
+                                    "runAfter": {},
+                                    "cases": {
+                                        "Case": {
+                                            "case": "DL",
+                                            "actions": {
+                                                "Analyze_ID_Document": {
+                                                    "runAfter": {},
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "headers": {
+                                                            "inputFileUrl": "@body('Create_SAS_URI_by_path_(V2)')?['WebUrl']"
+                                                        },
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['formrecognizer']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "post",
+                                                        "path": "/v2.1/prebuilt/idDocument/analyze",
+                                                        "queries": {
+                                                            "includeTextDetails": true
+                                                        }
+                                                    }
+                                                },
+                                                "For_each_2": {
+                                                    "foreach": "@body('Analyze_ID_Document')?['analyzeResult']?['documentResults']",
+                                                    "actions": {
+                                                        "Create_or_update_document_(V3)": {
+                                                            "runAfter": {},
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": {
+                                                                    "Address": "@{items('For_each_2')?['fields']?['Address']?['text']}",
+                                                                    "CountryRegion": "@{items('For_each_2')?['fields']?['CountryRegion']?['valueCountryRegion']}",
+                                                                    "DateOfBirth": "@{items('For_each_2')?['fields']?['DateOfBirth']?['text']}",
+                                                                    "DateOfExpiration": "@{items('For_each_2')?['fields']?['DateOfExpiration']?['text']}",
+                                                                    "DocumentId": "@variables('DocumentId')",
+                                                                    "DocumentNumber": "@{items('For_each_2')?['fields']?['DocumentNumber']?['text']}",
+                                                                    "DocumentType": "@{items('For_each_2')?['docType']}",
+                                                                    "FileName": "@{triggerBody()?['Name']}",
+                                                                    "FirstName": "@{items('For_each_2')?['fields']?['FirstName']?['text']}",
+                                                                    "LastName": "@{items('For_each_2')?['fields']?['LastName']?['text']}",
+                                                                    "Nationality": "@{items('For_each_2')?['fields']?['Nationality']?['valueCountryRegion']}",
+                                                                    "Region": "@{items('For_each_2')?['fields']?['Region']?['text']}",
+                                                                    "Sex": "@{items('For_each_2')?['fields']?['Sex']?['text']}",
+                                                                    "formtype": "Driving License",
+                                                                    "id": "@{guid()}"
+                                                                },
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['documentdb_1']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/v2/cosmosdb/@{encodeURIComponent('AccountNameFromSettings')}/dbs/@{encodeURIComponent('SQLDatabase')}/colls/@{encodeURIComponent('DL')}/docs"
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {
+                                                        "Analyze_ID_Document": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "Foreach"
+                                                }
+                                            }
+                                        },
+                                        "Case_2": {
+                                            "case": "1099",
+                                            "actions": {
+                                                "Analyze_Custom_Form": {
+                                                    "runAfter": {},
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "headers": {
+                                                            "inputFileUrl": "@body('Create_SAS_URI_by_path_(V2)')?['WebUrl']"
+                                                        },
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['formrecognizer']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "post",
+                                                        "path": "/v2.1/custom/models/@{encodeURIComponent('2288c0da-9bb8-4dea-b25a-4d61f3918c8c')}/analyze",
+                                                        "queries": {
+                                                            "includeTextDetails": true
+                                                        }
+                                                    }
+                                                },
+                                                "For_each_3": {
+                                                    "foreach": "@body('Parse_JSON_2')",
+                                                    "actions": {
+                                                        "Create_or_update_document_(V3)_2": {
+                                                            "runAfter": {},
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": {
+                                                                    "AccountNumber": "@{items('For_each_3')?['fields']?['AccountNumber']?['text']}",
+                                                                    "DocumentID": "@{variables('DocumentID')}",
+                                                                    "ExcessGoldenParachutePayments": "@{items('For_each_3')?['fields']?['ExcessGoldenParachutePayments']?['text']}",
+                                                                    "FATCA": "@{items('For_each_3')?['fields']?['VIN']?['FATCA']}",
+                                                                    "FederalIncomeTaxWithheld": "@{items('For_each_3')?['fields']?['FederalIncomeTaxWithheld']?['text']}",
+                                                                    "FileName": "@{triggerBody()?['Name']}",
+                                                                    "MedicalHealthCarePayments": "@{items('For_each_3')?['fields']?['MedicalHealthCarePayments']?['text']}",
+                                                                    "OtherIncome": "@{items('For_each_3')?['fields']?['OtherIncome']?['text']}",
+                                                                    "PayerAddress": "@{items('For_each_3')?['fields']?['PayerAddress']?['text']}",
+                                                                    "PayerName": "@{items('For_each_3')?['fields']?['PayerName']?['text']}",
+                                                                    "PayerTIN": "@{items('For_each_3')?['fields']?['PayerTIN']?['text']}",
+                                                                    "RecipientAddress": "@{items('For_each_3')?['fields']?['RecipientAddress']?['text']}",
+                                                                    "RecipientName": "@{items('For_each_3')?['fields']?['RecipientName']?['text']}",
+                                                                    "RecipientTIN": "@{items('For_each_3')?['fields']?['RecipientTIN']?['text']}",
+                                                                    "Royalties": "@{items('For_each_3')?['fields']?['Royalties']?['text']}",
+                                                                    "StateIncome": "@{items('For_each_3')?['fields']?['StateIncome']?['text']}",
+                                                                    "formtype": "1099",
+                                                                    "id": "@{guid()}"
+                                                                },
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['documentdb_1']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/v2/cosmosdb/@{encodeURIComponent('AccountNameFromSettings')}/dbs/@{encodeURIComponent('SQLDatabase')}/colls/@{encodeURIComponent('1099')}/docs"
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {
+                                                        "Parse_JSON_2": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "Foreach"
+                                                },
+                                                "Parse_JSON_2": {
+                                                    "runAfter": {
+                                                        "Analyze_Custom_Form": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "ParseJson",
+                                                    "inputs": {
+                                                        "content": "@body('Analyze_Custom_Form')?['analyzeResult']?['documentResults']",
+                                                        "schema": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "_fields": {
+                                                                        "items": {
+                                                                            "properties": {
+                                                                                "fieldName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "fieldValue": {
+                                                                                    "properties": {
+                                                                                        "boundingBox": {
+                                                                                            "items": {
+                                                                                                "type": "integer"
+                                                                                            },
+                                                                                            "type": "array"
+                                                                                        },
+                                                                                        "confidence": {
+                                                                                            "type": "number"
+                                                                                        },
+                                                                                        "elements": {
+                                                                                            "items": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "type": "array"
+                                                                                        },
+                                                                                        "page": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "text": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "valueString": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "type": "object"
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "fieldName",
+                                                                                "fieldValue"
+                                                                            ],
+                                                                            "type": "object"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "docType": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "docTypeConfidence": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "fields": {
+                                                                        "properties": {
+                                                                            "2ndTIN": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "409ADeferrals": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "AccountNumber": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "CropInsuranceProceeds": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "DirectSale5000": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueSelectionMark": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "ExcessGoldenParachutePayments": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "FATCA": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueSelectionMark": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "FederalIncomeTaxWithheld": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "FishResale": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "FishingBoatProceeds": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "GrossProceedsAttorney": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "MedicalHealthCarePayments": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "NonqualifiedDeferredCompensation": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "OtherIncome": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "PayerAddress": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "PayerName": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "PayerTIN": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "RecipientAddress": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "RecipientName": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "RecipientTIN": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "Rents": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "Royalties": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "StateIncome": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "StateNo": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "StateTaxWithheld": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueNumber": {
+                                                                                        "type": "integer"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "SubstitutePayments": {
+                                                                                "properties": {
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "modelId": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "pageRange": {
+                                                                        "items": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "type": "array"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "docType",
+                                                                    "modelId",
+                                                                    "pageRange",
+                                                                    "fields",
+                                                                    "docTypeConfidence",
+                                                                    "_fields"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "Case_3": {
+                                            "case": "W2",
+                                            "actions": {
+                                                "Analyze_Custom_Form_2": {
+                                                    "runAfter": {},
+                                                    "type": "ApiConnection",
+                                                    "inputs": {
+                                                        "headers": {
+                                                            "inputFileUrl": "@body('Create_SAS_URI_by_path_(V2)')?['WebUrl']"
+                                                        },
+                                                        "host": {
+                                                            "connection": {
+                                                                "name": "@parameters('$connections')['formrecognizer']['connectionId']"
+                                                            }
+                                                        },
+                                                        "method": "post",
+                                                        "path": "/v2.1/custom/models/@{encodeURIComponent('f3743ae1-3a0c-438f-b307-9a04b0f8a457')}/analyze",
+                                                        "queries": {
+                                                            "includeTextDetails": true
+                                                        }
+                                                    }
+                                                },
+                                                "For_each_4": {
+                                                    "foreach": "@body('Parse_JSON_4')",
+                                                    "actions": {
+                                                        "Create_or_update_document_(V3)_3": {
+                                                            "runAfter": {},
+                                                            "type": "ApiConnection",
+                                                            "inputs": {
+                                                                "body": {
+                                                                    "AccountNumber": "@{items('For_each_4')?['fields']?['AccountNumber']?['text']}",
+                                                                    "DocumentID": "@{variables('DocumentID')}",
+                                                                    "EIN": "@{items('For_each_4')?['fields']?['EIN']?['text']}",
+                                                                    "EmployeeAddress": "@{items('For_each_4')?['fields']?['EmployeeAddress']?['text']}",
+                                                                    "EmployeeName": "@{items('For_each_4')?['fields']?['EmployeeName']?['text']}",
+                                                                    "EmployeePhone": "@{items('For_each_4')?['fields']?['EmployeePhone']?['text']}",
+                                                                    "EmployerAddress": "@{triggerBody()?['EmployerAddress']}",
+                                                                    "Employerstateid": "@{items('For_each_4')?['fields']?['Employerstateid']?['text']}",
+                                                                    "FederalTaxholding": "@{items('For_each_4')?['fields']?['FederalTaxholding']?['text']}",
+                                                                    "FileName": "@{triggerBody()?['Name']}",
+                                                                    "TotalWages": "@{items('For_each_4')?['fields']?['TotalWages']?['text']}",
+                                                                    "formtype": "W2",
+                                                                    "id": "@{guid()}",
+                                                                    "ssn": "@{items('For_each_4')?['fields']?['ssn']?['text']}"
+                                                                },
+                                                                "host": {
+                                                                    "connection": {
+                                                                        "name": "@parameters('$connections')['documentdb_1']['connectionId']"
+                                                                    }
+                                                                },
+                                                                "method": "post",
+                                                                "path": "/v2/cosmosdb/@{encodeURIComponent('AccountNameFromSettings')}/dbs/@{encodeURIComponent('SQLDatabase')}/colls/@{encodeURIComponent('w2')}/docs"
+                                                            }
+                                                        }
+                                                    },
+                                                    "runAfter": {
+                                                        "Parse_JSON_4": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "Foreach"
+                                                },
+                                                "Parse_JSON_4": {
+                                                    "runAfter": {
+                                                        "Analyze_Custom_Form_2": [
+                                                            "Succeeded"
+                                                        ]
+                                                    },
+                                                    "type": "ParseJson",
+                                                    "inputs": {
+                                                        "content": "@body('Analyze_Custom_Form_2')?['analyzeResult']?['documentResults']",
+                                                        "schema": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "_fields": {
+                                                                        "items": {
+                                                                            "properties": {
+                                                                                "fieldName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "fieldValue": {
+                                                                                    "properties": {
+                                                                                        "boundingBox": {
+                                                                                            "items": {
+                                                                                                "type": "integer"
+                                                                                            },
+                                                                                            "type": "array"
+                                                                                        },
+                                                                                        "confidence": {
+                                                                                            "type": "number"
+                                                                                        },
+                                                                                        "elements": {
+                                                                                            "items": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "type": "array"
+                                                                                        },
+                                                                                        "page": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "text": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "valueString": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "type": "object"
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "fieldName",
+                                                                                "fieldValue"
+                                                                            ],
+                                                                            "type": "object"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "docType": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "docTypeConfidence": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "fields": {
+                                                                        "properties": {
+                                                                            "EIN": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "EmployeeName": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "EmployerAddress": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "FederalTaxholding": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "TotalWages": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "ssn": {
+                                                                                "properties": {
+                                                                                    "boundingBox": {
+                                                                                        "items": {
+                                                                                            "type": "integer"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "confidence": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "elements": {
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "page": {
+                                                                                        "type": "integer"
+                                                                                    },
+                                                                                    "text": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "type": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "valueString": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "modelId": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "pageRange": {
+                                                                        "items": {
+                                                                            "type": "integer"
+                                                                        },
+                                                                        "type": "array"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "docType",
+                                                                    "modelId",
+                                                                    "pageRange",
+                                                                    "fields",
+                                                                    "docTypeConfidence",
+                                                                    "_fields"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "default": {
+                                        "actions": {}
+                                    },
+                                    "expression": "@items('For_each')?['tagName']",
+                                    "type": "Switch"
+                                }
+                            },
+                            "runAfter": {
+                                "Filter_array": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "Foreach"
+                        },
+                        "Initialize_variable": {
+                            "runAfter": {
+                                "Copy_blob_(V2)": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "InitializeVariable",
+                            "inputs": {
+                                "variables": [
+                                    {
+                                        "name": "DocumentId",
+                                        "type": "string",
+                                        "value": "@{substring(triggerBody()?['DisplayName'],0,indexOf(triggerBody()?['DisplayName'], '_'))}"
+                                    }
+                                ]
+                            }
+                        },
+                        "Parse_JSON": {
+                            "runAfter": {
+                                "Classify_an_image_url_(V2)": [
+                                    "Succeeded"
+                                ]
+                            },
+                            "type": "ParseJson",
+                            "inputs": {
+                                "content": "@body('Classify_an_image_url_(V2)')?['predictions']",
+                                "schema": {
+                                    "items": {
+                                        "properties": {
+                                            "probability": {
+                                                "type": "number"
+                                            },
+                                            "tagId": {
+                                                "type": "string"
+                                            },
+                                            "tagName": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "probability",
+                                            "tagId",
+                                            "tagName"
+                                        ],
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azureblob_2": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_azureblob_5_name'))]",
+                                "connectionName": "azureblob-5",
+                                "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/azureblob')]"
+                            },
+                            "cognitiveservicescustomvision": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_cognitiveservicescustomvision_2_name'))]",
+                                "connectionName": "cognitiveservicescustomvision-2",
+                                "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/cognitiveservicescustomvision')]"
+                            },
+                            "documentdb_1": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_documentdb_1_name'))]",
+                                "connectionName": "documentdb-1",
+                                "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/documentdb')]"
+                            },
+                            "formrecognizer": {
+                                "connectionId": "[resourceId('Microsoft.Web/connections', parameters('connections_formrecognizer_name'))]",
+                                "connectionName": "formrecognizer",
+                                "id": "[concat('/subscriptions/',parameters('subscription_id'),'/providers/Microsoft.Web/locations/westus/managedApis/formrecognizer')]"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

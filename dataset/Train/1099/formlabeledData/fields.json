@@ -1,0 +1,136 @@
+{
+    "$schema": "https://schema.cognitiveservices.azure.com/formrecognizer/2021-03-01/fields.json",
+    "fields": [
+        {
+            "fieldKey": "PayerName",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "PayerAddress",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "PayerTIN",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "RecipientTIN",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "RecipientName",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "RecipientAddress",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "AccountNumber",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "FATCA",
+            "fieldType": "selectionMark",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "2ndTIN",
+            "fieldType": "selectionMark",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Rents",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "Royalties",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "OtherIncome",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "FederalIncomeTaxWithheld",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "FishingBoatProceeds",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "MedicalHealthCarePayments",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "DirectSale5000",
+            "fieldType": "selectionMark",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "SubstitutePayments",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "CropInsuranceProceeds",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "GrossProceedsAttorney",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "FishResale",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "409ADeferrals",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "ExcessGoldenParachutePayments",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "NonqualifiedDeferredCompensation",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "StateTaxWithheld",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "StateNo",
+            "fieldType": "string",
+            "fieldFormat": "not-specified"
+        },
+        {
+            "fieldKey": "StateIncome",
+            "fieldType": "number",
+            "fieldFormat": "not-specified"
+        }
+    ],
+    "definitions": {}
+}

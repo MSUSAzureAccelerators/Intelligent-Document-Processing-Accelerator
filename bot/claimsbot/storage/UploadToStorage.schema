@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "https://schemas.botframework.com/schemas/component/v1.0/component.schema",
+  "$role": "implements(Microsoft.IDialog)",
+  "title": "UploadToStorage",
+  "description": "This will upload the attachment to storage account",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "contentUrl": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "contentUrl",
+      "description": "Url of the attachment"
+    },
+    "storageString": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "storageString",
+      "description": "Azure Storage string"
+    },
+    "container": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "container",
+      "description": "Container to upload the image to"
+    },
+    "blobName": {
+      "$ref": "schema:#/definitions/stringExpression",
+      "title": "blobName",
+      "description": "Blob Name"
+    }
+  },
+  "required": [ "contentUrl", "storageString", "container", "blobName" ]
+}
