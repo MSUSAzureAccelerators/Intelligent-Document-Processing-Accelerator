@@ -1,0 +1,14 @@
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\msrpaolay.deps.json
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\msrpaolay.runtimeconfig.json
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\msrpaolay.runtimeconfig.dev.json
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\msrpaolay.dll
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\Microsoft.WindowsAzure.Storage.dll
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\Microsoft.WindowsAzure.Storage.pdb
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.csprojAssemblyReference.cache
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.csproj.CoreCompileInputs.cache
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.AssemblyInfoInputs.cache
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.AssemblyInfo.cs
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.csproj.CopyComplete
+C:\Projects\Repos\msrpa\msrpaolay\bin\Debug\netcoreapp2.2\msrpaolay.pdb
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.dll
+C:\Projects\Repos\msrpa\msrpaolay\obj\Debug\netcoreapp2.2\msrpaolay.pdb

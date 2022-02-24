@@ -1,0 +1,1 @@
+.\deployNewModel.ps1 -uniqueName '' -location '' -subscriptionId '' -resourceGroupName ''

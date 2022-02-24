@@ -1,0 +1,635 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logic_app_name": {
+            "type": "string"
+        },
+        "subscription_id":{
+            "type": "securestring"
+        },
+		"resource_group_name":{
+            "type": "string"
+        },
+		"location": {
+            "type": "string"
+        },
+        "bo_resource_id": {
+            "type": "string"
+        },
+        "pdf_resource_id": {
+            "type": "string"
+        },
+        "azureblob_resource_id": {
+            "type": "string"
+        },
+		"azureeventgrid_resource_id": {
+            "type": "string"
+        },
+        "form_classification_key": {
+            "type": "string"
+        },
+        "form_classification_url": {
+            "type": "string"
+        },
+        "storage_connection_string": {
+            "type": "string"
+        },
+        "storage_url": {
+            "type": "string"
+        },
+		"storage_name": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('logic_app_name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "[concat('https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/', parameters('logic_app_name'), 'definition.json#')]",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                         "When_a_resource_event_occurs": {
+							"inputs": {
+								"body": {
+									"properties": {
+										"destination": {
+											"endpointType": "webhook",
+											"properties": {
+												"endpointUrl": "@{listCallbackUrl()}"
+											}
+										},
+										"filter": {
+											"includedEventTypes": [
+												"Microsoft.Storage.BlobCreated"
+											],
+											"subjectBeginsWith": "/blobServices/default/containers/formspdf/blobs",
+											"subjectEndsWith": ".pdf"
+										},
+										"topic": 
+										"[concat('/subscriptions/', parameters('subscription_id'), '/resourceGroups/', parameters('resource_group_name'), '/providers/Microsoft.Storage/storageAccounts/', parameters('storage_name'))]"
+									}
+								},
+								"host": {
+									"connection": {
+										"name": "@parameters('$connections')['azureeventgrid']['connectionId']"
+									}
+								},
+								"path": 
+								"[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Storage.StorageAccounts/resource/eventSubscriptions')]",
+								"queries": {
+									"subscriptionName": "pdftriggereg",
+									"x-ms-api-version": "2017-06-15-preview"
+								}
+							},
+							"splitOn": "@triggerBody()",
+							"type": "ApiConnectionWebhook"
+						}
+                    },
+                    "actions": {
+                        "Blob_Name": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "blobName",
+										"type": "String"
+									}
+								]
+							},
+							"runAfter": {
+								"Storage_Url": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Convert_Pdf": {
+							"inputs": {
+								"body": {
+									"destContainer": "@{variables('destContainer')}",
+									"folder": "@{variables('folderName')}",
+									"processedContainer": "@{variables('processedContainer')}",
+									"sourceContainer": "@{variables('sourceContainer')}",
+									"storageString": "@{variables('storageString')}"
+								},
+								"function": {
+									"id": "[concat(parameters('pdf_resource_id'), '/functions/PdfConvertor')]"
+								}
+							},
+							"runAfter": {
+								"FileName": [
+									"Succeeded"
+								]
+							},
+							"type": "Function"
+						},
+						"Custom_Vision": {
+							"inputs": {
+								"body": {
+									"Url": "@{variables('storageUrl')}/@{variables('destContainer')}/@{trim(replace(variables('fileName'),'.pdf', ''))}/@{trim(replace(variables('fileName'),'.pdf',''))}_001.jpg"
+								},
+								"headers": {
+									"Content-Type": "application/json",
+									"Prediction-Key": "@variables('formsClassificationKey')"
+								},
+								"method": "POST",
+								"uri": "@variables('formsClassificationUrl')"
+							},
+							"runAfter": {
+								"Convert_Pdf": [
+									"Succeeded"
+								]
+							},
+							"type": "Http"
+						},
+						"Destination_Container": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "destContainer",
+										"type": "String",
+										"value": "formsimages"
+									}
+								]
+							},
+							"runAfter": {
+								"Source_Container": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"FileName": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "fileName",
+										"type": "String",
+										"value": "@{replace(variables('Url'), replace(variables('Url'),last(split(variables('Url'), '/')), ''),'')}"
+									}
+								]
+							},
+							"runAfter": {
+								"Folder": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Filter_Form": {
+							"inputs": {
+								"from": "@body('Parse_for_FormName')",
+								"where": "@not(equals(item()['tagName'], 'Yes'))"
+							},
+							"runAfter": {
+								"Parse_for_FormName": [
+									"Succeeded"
+								]
+							},
+							"type": "Query"
+						},
+						"Filter_Tags": {
+							"inputs": {
+								"from": "@body('Parse_Custom_Vision_Json')?['predictions']",
+								"where": "@greater(item()?['probability'], 0.3)"
+							},
+							"runAfter": {
+								"Parse_Custom_Vision_Json": [
+									"Succeeded"
+								]
+							},
+							"type": "Query"
+						},
+						"Filter_Yes": {
+							"inputs": {
+								"from": "@body('Parse_Higher_Predictions')",
+								"where": "@equals(item()['tagName'], 'Yes')"
+							},
+							"runAfter": {
+								"Parse_Higher_Predictions": [
+									"Succeeded"
+								]
+							},
+							"type": "Query"
+						},
+						"Folder": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "folderName",
+										"type": "String",
+										"value": "@{replace(variables('Url'), concat(variables('storageUrl'), '/', variables('sourceContainer'), '/'), '')}"
+									}
+								]
+							},
+							"runAfter": {
+								"Url": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Forms_Classification_Key": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "formsClassificationKey",
+										"type": "String",
+										"value": "[parameters('form_classification_key')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Forms_Classification_Url": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Forms_Classification_Url": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "formsClassificationUrl",
+										"type": "String",
+										"value": "[parameters('form_classification_url')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Blob_Name": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"If_contains_forms": {
+							"actions": {
+								"Move_Blobs": {
+									"inputs": {
+										"body": {
+											"destContainer": "@{variables('processForms')}",
+											"destFolder": "@{body('Filter_Form')[0]?['tagName']}/@{trim(replace(variables('fileName'),'.pdf', ''))}",
+											"imageFolder": "@{trim(replace(variables('fileName'),'.pdf', ''))}",
+											"pdfFolder": "@{variables('folderName')}",
+											"processedContainer": "@{variables('processedContainer')}",
+											"sourceContainer": "@{variables('destContainer')}",
+											"storageString": "@{variables('storageString')}"
+										},
+										"function": {
+											"id": "[concat(parameters('bo_resource_id'), '/functions/BlobOperations')]"
+										}
+									},
+									"runAfter": {},
+									"type": "Function"
+								}
+							},
+							"expression": {
+								"and": [
+									{
+										"greaterOrEquals": [
+											"@length(body('Filter_Yes'))",
+											1
+										]
+									},
+									{
+										"greaterOrEquals": [
+											"@length(body('Filter_Form'))",
+											1
+										]
+									}
+								]
+							},
+							"runAfter": {
+								"Filter_Form": [
+									"Succeeded"
+								]
+							},
+							"type": "If"
+						},
+						"Parse_Custom_Vision_Json": {
+							"inputs": {
+								"content": "@body('Custom_Vision')",
+								"schema": {
+									"properties": {
+										"created": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"iteration": {
+											"type": "string"
+										},
+										"predictions": {
+											"items": {
+												"properties": {
+													"probability": {
+														"type": "number"
+													},
+													"tagId": {
+														"type": "string"
+													},
+													"tagName": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"probability",
+													"tagId",
+													"tagName"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"project": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							},
+							"runAfter": {
+								"Custom_Vision": [
+									"Succeeded"
+								]
+							},
+							"type": "ParseJson"
+						},
+						"Parse_Higher_Predictions": {
+							"inputs": {
+								"content": "@body('Filter_Tags')",
+								"schema": {
+									"items": {
+										"properties": {
+											"probability": {
+												"type": "number"
+											},
+											"tagId": {
+												"type": "string"
+											},
+											"tagName": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"probability",
+											"tagId",
+											"tagName"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"runAfter": {
+								"Filter_Tags": [
+									"Succeeded"
+								]
+							},
+							"type": "ParseJson"
+						},
+						"Parse_event_Json": {
+							"inputs": {
+								"content": "@triggerBody()",
+								"schema": {
+									"properties": {
+										"data": {
+											"properties": {
+												"api": {
+													"type": "string"
+												},
+												"blobType": {
+													"type": "string"
+												},
+												"clientRequestId": {
+													"type": "string"
+												},
+												"contentLength": {
+													"type": "integer"
+												},
+												"contentType": {
+													"type": "string"
+												},
+												"eTag": {
+													"type": "string"
+												},
+												"requestId": {
+													"type": "string"
+												},
+												"sequencer": {
+													"type": "string"
+												},
+												"storageDiagnostics": {
+													"properties": {
+														"batchId": {
+															"type": "string"
+														}
+													},
+													"type": "object"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"type": "object"
+										},
+										"dataVersion": {
+											"type": "string"
+										},
+										"eventTime": {
+											"type": "string"
+										},
+										"eventType": {
+											"type": "string"
+										},
+										"id": {
+											"type": "string"
+										},
+										"metadataVersion": {
+											"type": "string"
+										},
+										"subject": {
+											"type": "string"
+										},
+										"topic": {
+											"type": "string"
+										}
+									},
+									"type": "object"
+								}
+							},
+							"runAfter": {},
+							"type": "ParseJson"
+						},
+						"Parse_for_FormName": {
+							"inputs": {
+								"content": "@body('Parse_Higher_Predictions')",
+								"schema": {
+									"items": {
+										"properties": {
+											"probability": {
+												"type": "number"
+											},
+											"tagId": {
+												"type": "string"
+											},
+											"tagName": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"probability",
+											"tagId",
+											"tagName"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								}
+							},
+							"runAfter": {
+								"Filter_Yes": [
+									"Succeeded"
+								]
+							},
+							"type": "ParseJson"
+						},
+						"Process_Forms": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "processForms",
+										"type": "String",
+										"value": "processforms"
+									}
+								]
+							},
+							"runAfter": {
+								"Processed_Container": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Processed_Container": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "processedContainer",
+										"type": "String",
+										"value": "formspdfprocessed"
+									}
+								]
+							},
+							"runAfter": {
+								"Destination_Container": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Source_Container": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "sourceContainer",
+										"type": "String",
+										"value": "formspdf"
+									}
+								]
+							},
+							"runAfter": {
+								"Parse_event_Json": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Storage_Connection_String": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "storageString",
+										"type": "String",
+										"value": "[parameters('storage_connection_string')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Process_Forms": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Storage_Url": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "storageUrl",
+										"type": "String",
+										"value": "[parameters('storage_url')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Storage_Connection_String": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Url": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "Url",
+										"type": "String",
+										"value": "@body('Parse_event_Json')?['data']?['url']"
+									}
+								]
+							},
+							"runAfter": {
+								"Forms_Classification_Key": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						}
+                    },
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azureblob": {
+                                "connectionId": "[parameters('azureblob_resource_id')]",
+                                "connectionName": "azureblob",
+                                "id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/azureblob')]"
+                            },
+							"azureeventgrid": {
+								"connectionId": "[parameters('azureeventgrid_resource_id')]",
+								"connectionName": "azureeventgrid",
+								"id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/azureeventgrid')]"
+							}
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

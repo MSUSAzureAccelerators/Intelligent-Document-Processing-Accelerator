@@ -1,0 +1,1 @@
+.\deploy.ps1 -uniqueName '' -location '' -subscriptionId '' -resourceGroupName ''

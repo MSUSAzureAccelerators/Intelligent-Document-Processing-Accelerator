@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logic_app_name": {
+      "value": ""
+    },
+    "subscription_id": {
+      "value": ""
+    },
+    "location": {
+      "value": ""
+    },
+    "office365_resource_id": {
+      "value": ""
+    },
+    "azureblob_resource_id": {
+      "value": ""
+    },
+    "storage_connection_string": {
+      "value": ""
+    },
+    "storage_url": {
+      "value": ""
+    }
+  }
+}

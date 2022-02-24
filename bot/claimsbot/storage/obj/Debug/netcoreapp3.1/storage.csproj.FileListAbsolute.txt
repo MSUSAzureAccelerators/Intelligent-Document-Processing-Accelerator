@@ -1,9 +1,0 @@
-D:\repos\insurancehack\bot\claimsbot\storage\bin\Debug\netcoreapp3.1\storage.deps.json
-D:\repos\insurancehack\bot\claimsbot\storage\bin\Debug\netcoreapp3.1\storage.dll
-D:\repos\insurancehack\bot\claimsbot\storage\bin\Debug\netcoreapp3.1\storage.pdb
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.GeneratedMSBuildEditorConfig.editorconfig
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.AssemblyInfoInputs.cache
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.AssemblyInfo.cs
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.csproj.CoreCompileInputs.cache
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.dll
-D:\repos\insurancehack\bot\claimsbot\storage\obj\Debug\netcoreapp3.1\storage.pdb

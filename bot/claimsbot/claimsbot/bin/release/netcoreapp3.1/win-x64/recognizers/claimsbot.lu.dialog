@@ -1,8 +1,0 @@
-{
-  "$kind": "Microsoft.MultiLanguageRecognizer",
-  "id": "LUIS_claimsbot",
-  "recognizers": {
-    "en-us": "claimsbot.en-us.lu",
-    "": "claimsbot.en-us.lu"
-  }
-}

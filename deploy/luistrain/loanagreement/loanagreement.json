@@ -1,0 +1,745 @@
+{
+  "luis_schema_version": "4.0.0",
+  "versionId": "0.1",
+  "name": "loanagreement",
+  "desc": "",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "intents": [
+    {
+      "name": "None"
+    },
+    {
+      "name": "Page1"
+    },
+    {
+      "name": "Page3"
+    }
+  ],
+  "entities": [
+    {
+      "name": "agreementdate",
+      "roles": []
+    },
+    {
+      "name": "amountdollar",
+      "roles": []
+    },
+    {
+      "name": "amountword",
+      "roles": []
+    },
+    {
+      "name": "borrower",
+      "roles": []
+    },
+    {
+      "name": "borrowercity",
+      "roles": []
+    },
+    {
+      "name": "borrowername",
+      "roles": []
+    },
+    {
+      "name": "borrowerstate",
+      "roles": []
+    },
+    {
+      "name": "borrowerstreet",
+      "roles": []
+    },
+    {
+      "name": "lender",
+      "roles": []
+    },
+    {
+      "name": "lendercity",
+      "roles": []
+    },
+    {
+      "name": "lendername",
+      "roles": []
+    },
+    {
+      "name": "lenderstate",
+      "roles": []
+    },
+    {
+      "name": "lenderstreet",
+      "roles": []
+    },
+    {
+      "name": "witness1name",
+      "roles": []
+    },
+    {
+      "name": "witness2name",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [
+    {
+      "pattern": "loan agreement loan amount {amountword} dollars {amountword}date {agreementdate}",
+      "intent": "Page1"
+    },
+    {
+      "pattern": "the parties. for the above value received by {borrower}with a mailing address of {borrowerstreet}, city of{borrowercity}state of {borrowerstate}",
+      "intent": "Page1"
+    }
+  ],
+  "utterances": [
+    {
+      "text": "in witness whereof, borrower has executed this promissory note as of the day and year first above written. borrower's signature: print : john gru lender's signature: print: gru despicable witness's signature: print: witness number 1 witness's signature: print: witness number 2 e page 3 of 3",
+      "intent": "Page3",
+      "entities": [
+        {
+          "entity": "borrowername",
+          "startPos": 137,
+          "endPos": 144
+        },
+        {
+          "entity": "lendername",
+          "startPos": 173,
+          "endPos": 186
+        },
+        {
+          "entity": "witness1name",
+          "startPos": 216,
+          "endPos": 231
+        },
+        {
+          "entity": "witness2name",
+          "startPos": 261,
+          "endPos": 276
+        }
+      ]
+    },
+    {
+      "text": "in witness whereof, borrower has executed this promissory note as of the day and year first above written. borrower's signature: print: ashish talati lender's signature: print: joe smith witness's signature: print: witness 1 witness's signature: print: witness2 e page 3 of 3",
+      "intent": "Page3",
+      "entities": [
+        {
+          "entity": "borrowername",
+          "startPos": 136,
+          "endPos": 148
+        },
+        {
+          "entity": "lendername",
+          "startPos": 177,
+          "endPos": 185
+        },
+        {
+          "entity": "witness1name",
+          "startPos": 215,
+          "endPos": 223
+        },
+        {
+          "entity": "witness2name",
+          "startPos": 253,
+          "endPos": 260
+        }
+      ]
+    },
+    {
+      "text": "in witness whereof, borrower has executed this promissory note as of the day and year first above written. borrower's signature: print: jane doe lender's signature: print: reuben tishkoff witness's signature: print : linus caldwell witness's signature: print: danny ocean e page 3 of 3",
+      "intent": "Page3",
+      "entities": [
+        {
+          "entity": "borrowername",
+          "startPos": 136,
+          "endPos": 143
+        },
+        {
+          "entity": "lendername",
+          "startPos": 172,
+          "endPos": 186
+        },
+        {
+          "entity": "witness1name",
+          "startPos": 217,
+          "endPos": 230
+        },
+        {
+          "entity": "witness2name",
+          "startPos": 260,
+          "endPos": 270
+        }
+      ]
+    },
+    {
+      "text": "in witness whereof, borrower has executed this promissory note as of the day and year first above written. borrower's signature: print: reade lender's signature: print: smithsonian john witness's signature: print : joe davito witness's signature: print: danny smith e page 3 of 3",
+      "intent": "Page3",
+      "entities": [
+        {
+          "entity": "borrowername",
+          "startPos": 136,
+          "endPos": 140
+        },
+        {
+          "entity": "lendername",
+          "startPos": 169,
+          "endPos": 184
+        },
+        {
+          "entity": "witness1name",
+          "startPos": 215,
+          "endPos": 224
+        },
+        {
+          "entity": "witness2name",
+          "startPos": 254,
+          "endPos": 264
+        }
+      ]
+    },
+    {
+      "text": "in witness whereof, borrower has executed this promissory note as of the day and year first above written. borrower's signature: print: smith junior lender's signature: print: john despande senior witness's signature: print : senior john witness's signature: print: junior john e page 3 of 3",
+      "intent": "Page3",
+      "entities": [
+        {
+          "entity": "borrowername",
+          "startPos": 136,
+          "endPos": 147
+        },
+        {
+          "entity": "lendername",
+          "startPos": 176,
+          "endPos": 195
+        },
+        {
+          "entity": "witness1name",
+          "startPos": 226,
+          "endPos": 236
+        },
+        {
+          "entity": "witness2name",
+          "startPos": 266,
+          "endPos": 276
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount dollars ($ 194,037 date november 20 19 i. the parties. for the above value received by john gru with a mailing address of 5th avenue , city of naperville state of il country financials (the \"borrower\"), agrees to pay with a mailing address of 1384 address, suite 2000 of arlington heights _, city state of il (the \"lender\").",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountdollar",
+          "startPos": 35,
+          "endPos": 44
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 51,
+          "endPos": 64
+        },
+        {
+          "entity": "borrower",
+          "startPos": 114,
+          "endPos": 121
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 149,
+          "endPos": 158
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 170,
+          "endPos": 179
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 190,
+          "endPos": 191
+        },
+        {
+          "entity": "lender",
+          "startPos": 193,
+          "endPos": 210
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 270,
+          "endPos": 293
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 298,
+          "endPos": 314
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 333,
+          "endPos": 334
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount dollars ($ 194,037 date november 20 19 i. the parties. for the above value received by john gru with a mailing address of 5th avenue , city of naperville state of il country financials (the \\\"borrower\\\"), agrees to pay with a mailing address of 1384 address, suite 2000 of arlington heights city state of il (the \\\"lender\\\"). ii. payment. this agreement, (the \\\"note\\\"), shall be due and payable, including the principal and any accrued interest",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountdollar",
+          "startPos": 35,
+          "endPos": 44
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 51,
+          "endPos": 64
+        },
+        {
+          "entity": "borrower",
+          "startPos": 114,
+          "endPos": 121
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 149,
+          "endPos": 158
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 170,
+          "endPos": 179
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 190,
+          "endPos": 191
+        },
+        {
+          "entity": "lender",
+          "startPos": 193,
+          "endPos": 210
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 272,
+          "endPos": 295
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 300,
+          "endPos": 316
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 332,
+          "endPos": 333
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount dollars ($ 200,000 date 10/19/ 20 19 i. the parties. for the above value received by ashish talati with a mailing address of 123 wellknown street city of aurora state of il jp morgan , (the \"borrower\"), agrees to pay with a mailing address of 1384 5th avenue city of chicago state of il (the \"lender\").",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountdollar",
+          "startPos": 35,
+          "endPos": 44
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 51,
+          "endPos": 62
+        },
+        {
+          "entity": "borrower",
+          "startPos": 112,
+          "endPos": 124
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 152,
+          "endPos": 171
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 181,
+          "endPos": 186
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 197,
+          "endPos": 198
+        },
+        {
+          "entity": "lender",
+          "startPos": 200,
+          "endPos": 208
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 270,
+          "endPos": 284
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 294,
+          "endPos": 300
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 311,
+          "endPos": 312
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount dollars ($ 200,000 date 10/19/ 20 19 i. the parties. for the above value received by ashish talati with a mailing address of 123 wellknown street city of aurora state of il jp morgan , (the \\\"borrower\\\"), agrees to pay with a mailing address of 1384 5th avenue city of chicago state of il (the \\\"lender\\\"). ii. payment.",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountdollar",
+          "startPos": 35,
+          "endPos": 44
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 51,
+          "endPos": 62
+        },
+        {
+          "entity": "borrower",
+          "startPos": 112,
+          "endPos": 124
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 152,
+          "endPos": 171
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 181,
+          "endPos": 186
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 197,
+          "endPos": 198
+        },
+        {
+          "entity": "lender",
+          "startPos": 200,
+          "endPos": 208
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 272,
+          "endPos": 286
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 296,
+          "endPos": 302
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 313,
+          "endPos": 314
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount dollars ($ 200,000 date 10/19/ 20 19 i. the parties. for the above value received by ashish talati with a mailing address of 123 wellknown street city of aurora state of il jp morgan , (the \\\"borrower\\\"), agrees to pay with a mailing address of 1384 5th avenue city of chicago state of il (the \\\"lender\\\"). ii. payment. this agreement, (the \\\"note\\\"), shall be due and payable, including the principal and any accrued interest, in one of the following ways: once per week",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountdollar",
+          "startPos": 35,
+          "endPos": 44
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 51,
+          "endPos": 62
+        },
+        {
+          "entity": "borrower",
+          "startPos": 112,
+          "endPos": 124
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 152,
+          "endPos": 171
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 181,
+          "endPos": 186
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 197,
+          "endPos": 198
+        },
+        {
+          "entity": "lender",
+          "startPos": 200,
+          "endPos": 208
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 272,
+          "endPos": 286
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 296,
+          "endPos": 302
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 313,
+          "endPos": 314
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount five hundred thousands dollars ($500,000 date august 20 19 i. the parties. for the above value received by smith junior with a mailing address of 1284 mitchell road , city of orange state of la captial one , (the \"borrower\"), agrees to pay with a mailing address of 1 capital way of newyork city state of ny (the \"lender\").",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountword",
+          "startPos": 27,
+          "endPos": 48
+        },
+        {
+          "entity": "amountdollar",
+          "startPos": 58,
+          "endPos": 66
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 73,
+          "endPos": 84
+        },
+        {
+          "entity": "borrower",
+          "startPos": 134,
+          "endPos": 145
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 173,
+          "endPos": 190
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 202,
+          "endPos": 207
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 218,
+          "endPos": 219
+        },
+        {
+          "entity": "lender",
+          "startPos": 221,
+          "endPos": 231
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 293,
+          "endPos": 305
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 310,
+          "endPos": 321
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 332,
+          "endPos": 333
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount five hundred thousands dollars ($500,000 date august 20 19 i. the parties. for the above value received by smith junior with a mailing address of 1284 mitchell road , city of orange state of la captial one , (the \\\"borrower\\\"), agrees to pay of newyork with a mailing address of 1 capital way city state of ny (the \\\"lender\\\"). ii. payment. this agreement, (the \\\"note\\\"), shall be due and payable, including the principal and any accrued interest, in one of the",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountword",
+          "startPos": 27,
+          "endPos": 48
+        },
+        {
+          "entity": "amountdollar",
+          "startPos": 58,
+          "endPos": 66
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 73,
+          "endPos": 84
+        },
+        {
+          "entity": "borrower",
+          "startPos": 134,
+          "endPos": 145
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 173,
+          "endPos": 190
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 202,
+          "endPos": 207
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 218,
+          "endPos": 219
+        },
+        {
+          "entity": "lender",
+          "startPos": 221,
+          "endPos": 231
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 306,
+          "endPos": 318
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 334,
+          "endPos": 335
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount twenty million dollars ($ 20,000,000 date january 20 19 i. the parties. for the above value received by reade with a mailing address of 700 michigan ave , city of chicago state of il broken bank , (the \\\"borrower\\\"), agrees to pay with a mailing address of loot me lane city of washington state of de (the \\\"lender\\\"). ii. payment. this agreement, (the \\\"note\\\"), shall be due and payable, including the principal and any accrued interest, in one of",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountword",
+          "startPos": 27,
+          "endPos": 40
+        },
+        {
+          "entity": "amountdollar",
+          "startPos": 50,
+          "endPos": 62
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 69,
+          "endPos": 81
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 163,
+          "endPos": 178
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 190,
+          "endPos": 196
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 207,
+          "endPos": 208
+        },
+        {
+          "entity": "lender",
+          "startPos": 210,
+          "endPos": 220
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 284,
+          "endPos": 295
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 305,
+          "endPos": 314
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 325,
+          "endPos": 326
+        }
+      ]
+    },
+    {
+      "text": "loan agreement loan amount two hunderd million dollars ($ 200,000,000 date january 20 19 i. the parties. for the above value received by jane doe with a mailing address of 1200 las vegas blvd , city of las vegas state of nv willy bank , (the \\\"borrower\\\"), agrees to pay with a mailing address of 1284 las vegas blvd city of las vegas state of nv (the \\\"lender\\\"). ii. payment. this agreement, (the \\\"note\\\"), shall be due and payable, including the principal and any accrued interest,",
+      "intent": "Page1",
+      "entities": [
+        {
+          "entity": "amountword",
+          "startPos": 27,
+          "endPos": 45
+        },
+        {
+          "entity": "amountdollar",
+          "startPos": 55,
+          "endPos": 68
+        },
+        {
+          "entity": "agreementdate",
+          "startPos": 75,
+          "endPos": 87
+        },
+        {
+          "entity": "borrower",
+          "startPos": 137,
+          "endPos": 144
+        },
+        {
+          "entity": "borrowerstreet",
+          "startPos": 172,
+          "endPos": 190
+        },
+        {
+          "entity": "borrowercity",
+          "startPos": 202,
+          "endPos": 210
+        },
+        {
+          "entity": "borrowerstate",
+          "startPos": 221,
+          "endPos": 222
+        },
+        {
+          "entity": "lender",
+          "startPos": 224,
+          "endPos": 233
+        },
+        {
+          "entity": "lenderstreet",
+          "startPos": 297,
+          "endPos": 315
+        },
+        {
+          "entity": "lendercity",
+          "startPos": 325,
+          "endPos": 333
+        },
+        {
+          "entity": "lenderstate",
+          "startPos": 344,
+          "endPos": 345
+        }
+      ]
+    }
+  ],
+  "settings": []
+}

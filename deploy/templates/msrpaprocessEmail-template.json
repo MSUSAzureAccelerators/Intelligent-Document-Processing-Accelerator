@@ -1,0 +1,344 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logic_app_name": {
+            "type": "string"
+        },
+        "subscription_id":{
+            "type": "securestring"
+        },
+		"location": {
+            "type": "string"
+        },
+        "office365_resource_id": {
+            "type": "string"
+        },
+        "azureblob_resource_id": {
+            "type": "string"
+        },
+        "storage_connection_string": {
+            "type": "string"
+        },
+        "storage_url": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('logic_app_name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "state": "Enabled",
+                "definition": {
+                    "$schema": "[concat('https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/', parameters('logic_app_name'), 'definition.json#')]",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {
+                        "$connections": {
+                            "defaultValue": {},
+                            "type": "Object"
+                        }
+                    },
+                    "triggers": {
+                        "When_New_Form_Arrives": {
+							"inputs": {
+								"host": {
+									"connection": {
+										"name": "@parameters('$connections')['office365']['connectionId']"
+									}
+								},
+								"method": "get",
+								"path": "/Mail/OnNewEmail",
+								"queries": {
+									"folderPath": "Inbox",
+									"importance": "Any",
+									"includeAttachments": true,
+									"subjectFilter": "msrpa"
+								}
+							},
+							"recurrence": {
+								"frequency": "Second",
+								"interval": 30
+							},
+							"splitOn": "@triggerBody()?['value']",
+							"type": "ApiConnection"
+						}
+                    },
+                    "actions": {
+						"Attachment_Type": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "attachmentContent",
+										"type": "String"
+									}
+								]
+							},
+							"runAfter": {
+								"Email_Body": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Check_if_we_have_attachment_in_the_email": {
+							"actions": {
+								"For_each": {
+									"actions": {
+										"If_attachment_is_pdf": {
+											"actions": {
+												"Create_blob": {
+													"inputs": {
+														"body": "@base64ToBinary(items('For_each')?['ContentBytes'])",
+														"host": {
+															"connection": {
+																"name": "@parameters('$connections')['azureblob']['connectionId']"
+															}
+														},
+														"method": "post",
+														"path": "/datasets/default/files",
+														"queries": {
+															"folderPath": "@{variables('destContainer')}/@{replace(items('For_each')?['Name'], '.pdf', '')}",
+															"name": "@items('For_each')?['Name']",
+															"queryParametersSingleEncoded": true
+														}
+													},
+													"runAfter": {},
+													"runtimeConfiguration": {
+														"contentTransfer": {
+															"transferMode": "Chunked"
+														}
+													},
+													"type": "ApiConnection"
+												}
+											},
+											"else": {
+												"actions": {
+													"Incorrect_Attachment_Exception": {
+														"inputs": {
+															"body": {
+																"Attachments": [
+																	{
+																		"ContentBytes": "@{items('For_each')?['ContentBytes']}",
+																		"Name": "Attachment Received"
+																	}
+																],
+																"Body": "Received email from @{variables('emailTo')} on @{variables('dateReceived')} with attachment content of @{variables('attachmentContent')}\n\nFollowing is the body message received :\n@{variables('emailBody')}",
+																"IsHtml": true,
+																"Subject": "Generic Exception - Incorrect Attachment",
+																"To": "astalati@microsoft.com"
+															},
+															"host": {
+																"connection": {
+																	"name": "@parameters('$connections')['office365']['connectionId']"
+																}
+															},
+															"method": "post",
+															"path": "/Mail"
+														},
+														"runAfter": {},
+														"type": "ApiConnection"
+													}
+												}
+											},
+											"expression": {
+												"or": [
+													{
+														"equals": [
+															"@variables('attachmentContent')",
+															"application/pdf"
+														]
+													},
+													{
+														"equals": [
+															"@variables('attachmentContent')",
+															"application/octet-stream"
+														]
+													}
+												]
+											},
+											"runAfter": {
+												"Set_Attachment_Type": [
+													"Succeeded"
+												]
+											},
+											"type": "If"
+										},
+										"Set_Attachment_Type": {
+											"inputs": {
+												"name": "attachmentContent",
+												"value": "@items('For_each')?['ContentType']"
+											},
+											"runAfter": {},
+											"type": "SetVariable"
+										}
+									},
+									"foreach": "@triggerBody()?['Attachments']",
+									"runAfter": {},
+									"type": "Foreach"
+								}
+							},
+							"else": {
+								"actions": {
+									"Missing_Attachment_Exception": {
+										"inputs": {
+											"body": {
+												"Body": "Received billing request from @{variables('emailTo')} on @{variables('dateReceived')} without any attachment.\n\nFollowing is the body content received in the email\n@{variables('emailBody')}",
+												"IsHtml": true,
+												"Subject": "Generic Exception - No attachment",
+												"To": "astalati@microsoft.com"
+											},
+											"host": {
+												"connection": {
+													"name": "@parameters('$connections')['office365']['connectionId']"
+												}
+											},
+											"method": "post",
+											"path": "/Mail"
+										},
+										"runAfter": {},
+										"type": "ApiConnection"
+									}
+								}
+							},
+							"expression": {
+								"and": [
+									{
+										"equals": [
+											"@triggerBody()?['HasAttachment']",
+											true
+										]
+									}
+								]
+							},
+							"runAfter": {
+								"Storage_Account_URL": [
+									"Succeeded"
+								]
+							},
+							"type": "If"
+						},
+						"Date_Received": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "dateReceived",
+										"type": "String",
+										"value": "@triggerBody()?['DateTimeReceived']"
+									}
+								]
+							},
+							"runAfter": {
+								"Attachment_Type": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Destination_Container": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "destContainer",
+										"type": "String",
+										"value": "formspdf"
+									}
+								]
+							},
+							"runAfter": {
+								"Date_Received": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Email_Body": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "emailBody",
+										"type": "String",
+										"value": "@triggerBody()?['Body']"
+									}
+								]
+							},
+							"runAfter": {
+								"Email_To": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Email_To": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "emailTo",
+										"type": "String",
+										"value": "@triggerBody()?['To']"
+									}
+								]
+							},
+							"runAfter": {},
+							"type": "InitializeVariable"
+						},
+						"Storage_Account": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "storageString",
+										"type": "String",
+										"value": "[parameters('storage_connection_string')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Destination_Container": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						},
+						"Storage_Account_URL": {
+							"inputs": {
+								"variables": [
+									{
+										"name": "storageUrl",
+										"type": "String",
+										"value": "[parameters('storage_connection_string')]"
+									}
+								]
+							},
+							"runAfter": {
+								"Storage_Account": [
+									"Succeeded"
+								]
+							},
+							"type": "InitializeVariable"
+						}
+					},
+                    "outputs": {}
+                },
+                "parameters": {
+                    "$connections": {
+                        "value": {
+                            "azureblob": {
+                                "connectionId": "[parameters('azureblob_resource_id')]",
+                                "connectionName": "azureblob",
+                                "id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/azureblob')]"
+                            },
+							"office365": {
+								"connectionId": "[parameters('office365_resource_id')]",
+								"connectionName": "office365",
+								"id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/office365')]"
+							}
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

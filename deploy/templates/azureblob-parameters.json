@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "subscription_id": {
+      "value": ""
+    },
+    "connections_azureblob_name": {
+      "value": ""
+    },
+    "storage_account_name": {
+      "value": ""
+    },
+    "storage_access_key": {
+      "value": ""
+    },
+    "location": {
+      "value": ""
+    }
+  }
+}

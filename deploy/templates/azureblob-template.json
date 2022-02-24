@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscription_id":{
+            "type": "securestring"
+        },
+        "connections_azureblob_name": {
+            "type": "string"
+        },
+        "storage_account_name": {
+            "type": "string"
+        },
+        "storage_access_key": {
+            "type": "securestring"
+        },
+        "location": {
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/connections",
+            "apiVersion": "2016-06-01",
+            "name": "[parameters('connections_azureblob_name')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "displayName": "[parameters('connections_azureblob_name')]",
+                "customParameterValues": {},
+                "api": {
+                    "id": "[concat('/subscriptions/', parameters('subscription_id'), '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/', 'azureblob')]"
+                },
+                "parameterValues": {
+                    "accountName": "[parameters('storage_account_name')]",
+                    "accessKey": "[parameters('storage_access_key')]"
+                }
+            }
+        }
+    ]
+}

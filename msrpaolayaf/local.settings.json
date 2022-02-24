@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "StorageContainerString": "DefaultEndpointsProtocol=https;AccountName=formsmvpsa;AccountKey=4FLrdxzbI7MDgjn9TdLSYjiDI7ZGHQsh4WU/28D20szF4QdjuxUqAsivE4T1S9yZNIiH5j6LJHkHMstvpQehWg==;EndpointSuffix=core.windows.net",
+    "SourceContainer" :  "processforms"
+
+  }
+}
