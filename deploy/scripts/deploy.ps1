@@ -857,7 +857,7 @@ if ($formsTraining -eq 'true')
 if ($formsTraining -eq 'true')
 {
 	Write-Host Training Form Recognizer... -ForegroundColor Green
-	$formRecognizerTrainUrl = $formRecognizerEndpoint + "formrecognizer/v1.0-preview/custom/train"
+	$formRecognizerTrainUrl = $formRecognizerEndpoint + "formrecognizer/v2.1/custom/models"
 	$outArray.Add("v_formRecognizerTrainUrl=$formRecognizerTrainUrl")
 
 	$formRecognizeHeader = @{
@@ -877,11 +877,13 @@ if ($formsTraining -eq 'true')
 			{
 				try
 				{
+                    Write-Host Invoking API.... -ForegroundColor Green
 					$response = Invoke-RestMethod -Method Post -Uri $formRecognizerTrainUrl -ContentType "application/json" -Headers $formRecognizeHeader -Body $body
 					$valid = $true
 				}
 				catch
 				{
+                    Write-Host Error Occurred... -ForegroundColor Red
 					$valid = $false
 					Start-Sleep -s 30
 				}
@@ -982,7 +984,7 @@ $customVisionProjectName = $prefix + "cvfclassify"
 $outArray.Add("v_customVisionProjectName = $customVisionProjectName")
 
 $customVisionClassificationType = "Multilabel"
-$customVisionProjectUrl = $customVisionTrainEndpoint + "customvision/v3.0/training/projects?name=" + $customVisionProjectName + "&classificationType=" + $customVisionClassificationType 
+$customVisionProjectUrl = $customVisionTrainEndpoint + "customvision/v3.3/training/projects?name=" + $customVisionProjectName + "&classificationType=" + $customVisionClassificationType 
 $outArray.Add("v_customVisionProjectUrl = $customVisionProjectUrl")
 
 $customVisionHeader = @{
@@ -1002,7 +1004,7 @@ if ($customVisionTraining -eq 'true')
 
 	# Create Custom Vision Tag - "Yes"
 	$YesTagName = 'Yes'
-	$custVisionYesTagUrl = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/tags?name=" + $YesTagName
+	$custVisionYesTagUrl = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/tags?name=" + $YesTagName
 	$outArray.Add("v_custVisionYesTagUrl = $custVisionYesTagUrl")
 
 	Write-Host Custom Vision Url $custVisionYesTagUrl -ForegroundColor Green
@@ -1038,7 +1040,7 @@ if ($customVisionTraining -eq 'true')
 		$customVisionContainers.Add($tagName)
 		# Create Tags
 		Write-Host Create Tag $tagName -ForegroundColor Green
-		$custVisionTagUrl = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/tags?name=" + $tagName
+		$custVisionTagUrl = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/tags?name=" + $tagName
 		Write-Host Custom Vision Url $custVisionTagUrl -ForegroundColor Green
 		$tagResponse = Invoke-RestMethod -Method Post -Uri $custVisionTagUrl -ContentType "application/json" -Headers $customVisionHeader
 		$customVisionTagId = $tagResponse.id
@@ -1075,7 +1077,7 @@ if ($customVisionTraining -eq 'true')
 				}"
 				
 				$multipleTags = "'" + $customVisionTagId + "','" + $customVisionYesTagId + "'"
-				$uploadUri = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/images?tagIds=[" + $multipleTags + "]"
+				$uploadUri = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/images?tagIds=[" + $multipleTags + "]"
 				Write-Host Upload Uri $uploadUri -ForegroundColor Green
 
 				$properties = @{
@@ -1104,7 +1106,7 @@ if ($customVisionTraining -eq 'true')
 				  ] 
 				}"
 				
-				$imageTagUri = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/images/tags"
+				$imageTagUri = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/images/tags"
 				$imageTagResponse = Invoke-RestMethod -Method POST -Uri $imageTagUri -ContentType "application/json" -Headers $customVisionHeader -Body $imageJsonBody
 				$imageTagResponse
 			}
@@ -1113,7 +1115,7 @@ if ($customVisionTraining -eq 'true')
 
 	Write-Host Train Custom Vision Model -ForegroundColor Green
 	# Train Custom Vision Model
-	$projectTrainUri = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/train?trainingType=Advanced&reservedBudgetInHours=1"
+	$projectTrainUri = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/train?trainingType=Regular&reservedBudgetInHours=1"
 	$outArray.Add("v_projectTrainUri = $projectTrainUri")
 
 	$projectTrainResponse = Invoke-RestMethod -Method POST -Uri $projectTrainUri -ContentType "application/json" -Headers $customVisionHeader
@@ -1132,7 +1134,7 @@ if ($customVisionTraining -eq 'true')
 		{
 			# Publish Iteration
 			$customVisionResourceId = (Get-AzResource -ResourceGroupName $resourceGroupName -Name $customVisionPredict).ResourceId
-			$projectPublishUri = $customVisionTrainEndpoint + "customvision/v3.0/training/projects/" + $customVisionProjectId + "/iterations/" + $trainingIterationId + "/publish?publishName=latest&predictionId=" + $customVisionResourceId
+			$projectPublishUri = $customVisionTrainEndpoint + "customvision/v3.3/training/projects/" + $customVisionProjectId + "/iterations/" + $trainingIterationId + "/publish?publishName=latest&predictionId=" + $customVisionResourceId
 			Write-Host Publish Iteration to $projectPublishUri -ForegroundColor Green
 			$projectPublishResponse = Invoke-RestMethod -Method POST -Uri $projectPublishUri -ContentType "application/json" -Headers $customVisionHeader
 			$projectPublishResponse
@@ -1146,7 +1148,7 @@ if ($customVisionTraining -eq 'true')
 	}
 
 	# Build Prediction Url
-	$projectPredictionUrl = $customVisionTrainEndpoint + "customvision/v3.0/Prediction/" + $customVisionProjectId + "/classify/iterations/latest/url"
+	$projectPredictionUrl = $customVisionTrainEndpoint + "customvision/v3.1/Prediction/" + $customVisionProjectId + "/classify/iterations/latest/url"
 	$projectPredictionKey = $customVisionPredictSubscriptionKey
 	$outArray.Add("v_projectPredictionUrl = $projectPredictionUrl")
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
@@ -1156,7 +1158,7 @@ else
 	# Get Projects
 	try
 	{
-		$customVisioncurrentProjectUrl = $customVisionTrainEndpoint + "customvision/v3.0/training/projects"
+		$customVisioncurrentProjectUrl = $customVisionTrainEndpoint + "customvision/v3.3/training/projects"
 		$cvProjectResp = Invoke-RestMethod -Method Get -Uri $customVisioncurrentProjectUrl -ContentType "application/json" -Headers $customVisionHeader
 
 		$prjId = $cvProjectResp | where { $_.name -eq $customVisionProjectName }
@@ -1169,7 +1171,7 @@ else
 	}
 	
 	# Build Prediction Url
-	$projectPredictionUrl = $customVisionTrainEndpoint + "customvision/v3.0/Prediction/" + $customVisionProjectId + "/classify/iterations/latest/url"
+	$projectPredictionUrl = $customVisionTrainEndpoint + "customvision/v3.3/Prediction/" + $customVisionProjectId + "/classify/iterations/latest/url"
 	$projectPredictionKey = $customVisionPredictSubscriptionKey
 	$outArray.Add("v_projectPredictionUrl = $projectPredictionUrl")
 	$outArray.Add("v_projectPredictionKey = $projectPredictionKey")
