@@ -1,8 +1,8 @@
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
-# Intelligent Document Processing Solution Accelerator
+# Intelligent Document Processing Accelerator
 
-Many organizations process different format of forms in various format. These forms go through a manual data entry process to extract all the relevant information before the data can be used by software applications. The manual processing adds time and opex in the process. The solution described here demonstrate how organizations can use Azure cognitive services to completely automate the data extraction and entry from pdf forms. The solution highlights the usage of the  **Form Recognizer** and **Azure Cognitive Search**  cognitive services. The pattern and template is data agnostic i.e. it can be easily customized to work on a custom set of forms as required by a POC, MVP or a demo. The demo also scales well through different kinds of forms and supports forms with multiple pages. 
+Many organizations process different format of forms in various format. These forms go through a manual data entry process to extract all the relevant information before the data can be used by software applications. The manual processing adds time and opex in the process. The accelerator described here demonstrates how organizations can use Azure cognitive services to completely automate the data extraction and entry from pdf forms. The accelerator highlights the usage of the  **Form Recognizer** and **Azure Cognitive Search**  cognitive services. The pattern and template is data agnostic i.e. it can be easily customized to work on a custom set of forms as required by a POC, MVP or a demo. The demo also scales well through different kinds of forms and supports forms with multiple pages. 
 
 ## Architecture
 
@@ -30,7 +30,7 @@ Many organizations process different format of forms in various format. These fo
 ### Step0 - Before you start (Pre-requisites)
 
 These are the key pre-requisites to deploy this solution:
-1. You need a Microsoft Azure account to create the services used in this solution. You can create a [free account](https://azure.microsoft.com/en-us/free/), use your MSDN account, or any other subscription where you have permission to create Azure services.
+1. You need a Microsoft Azure account to create the services used in this accelerator. You can create a [free account](https://azure.microsoft.com/en-us/free/), use your MSDN account, or any other subscription where you have permission to create Azure services.
 2.	PowerShell: The one-command deployment process uses PowerShell to execute all the required activities to get the solution up and running. If you don't have PowerShell, install it from [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6). Direct link to [MSI download](https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi). If you have an older version of Power Shell you will have to update to the latest version.
 3.	Request access to Form recognizer.  Form Recognizer is available in a limited-access preview. To get access to the preview, fill out and submit the Form Recognizer [access request form](https://aka.ms/FormRecognizerRequestAccess). Once you have access, you can [create](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_formUnderstandingPreview#create/Microsoft.CognitiveServicesFormRecognizer) the form recognizer service
 
@@ -48,7 +48,7 @@ Follow these steps to prepare the deployment:
 
 ### Step2 - Customization
 
-The demo contains built-in data set for doing a plug and play scenario. However, before you start the deployment, you can customize the solution to use the set of forms you would like to demonstrate. You can also skip this step if you do not want to use your own custom data.
+The demo contains built-in data set for doing a plug and play scenario. However, before you start the deployment, you can customize the accelerator to use the set of forms you would like to demonstrate. You can also skip this step if you do not want to use your own custom data.
 
 #### Built in Dataset
 
@@ -126,7 +126,7 @@ To add your own custom data set for training the models
 * Retrieve the unique name provided at the start of the script and create the URI by appending the web app postfix. <uniquname>webapp.azure.websites.net. There is no space between the uniquename and webapp. Open this uri from the browser. 
 * All the data from the forms added in e2etest folder can be searched using the search tab and you can also look at key phrases locations and organizations.
 * Alternatively, This solution allows you to upload files through its web interface, with 2 limitations: files up to 30 MB and up to 10 files at a time.
-* Also, This solution allows you to send the email (currently it is filtering emails with subject msrpa ) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
+* Also, This accelerator allows you to send the email (currently it is filtering emails with subject msrpa ) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
 * The cognitive search pipeline runs every 5 minutes so you might have to wait a few minutes before the data shows up on the webapp. 
 * You can also verify and look at the processed data in the cosmosDb container “formentities”  on the Azure portal.
 
