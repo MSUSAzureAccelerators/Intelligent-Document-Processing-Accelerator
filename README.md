@@ -71,7 +71,7 @@ To add your own custom data set for training the models
 * Add at least 5 sets of sample data for an optimum training of cognitive models. 
   * ![Custom Data](/images/customdata.png)
   * ![Custom Data Page](/images/customdatapage.png)
-* To enable end to end testing. Go to <path to extracted folder>\deploy\e2etest\ , create a new folder the same as step above with an exact same name and directly add the testing forms inside the newly created folder. 
+* To enable end to end testing. Go to <path to extracted folder>\deploy\e2etest\, create a new folder the same as step above with an exact same name and directly add the testing forms inside the newly created folder. 
 
 ### Step3 - Deployment
  
@@ -133,7 +133,7 @@ To add your own custom data set for training the models
 
 #### Note
  
-Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search!.  Additional Reference :
+Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search.  Additional Reference:
 * [KMA Demos Homepage](http://aka.ms/kma)
 * [KMA Source Code](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma/src)
 * [KMA 1-Click Deployment](https://aka.ms/kmadeployment)
