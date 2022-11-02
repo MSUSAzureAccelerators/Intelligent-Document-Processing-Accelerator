@@ -65,7 +65,7 @@ Loan agreement | Sample Loan agreement contract
 #### Adding custom Dataset
  
 To add your own custom data set for training the models 
-* Create a folder inside <path to extracted folder>\deploy\formstrain\ with a meaningful name. The folder names a further reflected in blob storage so using a meaningful name would help you navigate through the accelerator solution better. ( Avoid using special characters or spaces in the folder name.)
+* Create a folder inside <path to extracted folder>\deploy\formstrain\ with a meaningful name. The folder names a further reflected in blob storage so using a meaningful name would help you navigate through the accelerator solution better. (Avoid using special characters or spaces in the folder name.)
 * If your forms have multiple pages break the pdf into separate pages.
 * Under the newly created folder, create a separate folder for each page named page1, page2, etc. Add the pages to relevant folder. 
 * Add at least 5 sets of sample data for an optimum training of cognitive models. 
@@ -82,7 +82,7 @@ To add your own custom data set for training the models
 * Using the information collected above, run following command: 
   `.\Deploy.ps1 -uniqueName <unique_name> -subscriptionId <subscription_id> -location <location> -resourceGroupName <rgName>`
   
-**Note - Currently form recognizer, custom vision (training and prediction services) are available only in a certain region, so make sure to select the region where all required services are available. ( List of services by region available at https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all )**
+**Note - Currently form recognizer, custom vision (training and prediction services) are available only in a certain region, so make sure to select the region where all required services are available. (List of services by region available at https://azure.microsoft.com/en-us/global-infrastructure/services/?products=all )**
 
 * If you are not logged in, the script will ask you to do it. Authenticate in the browser using the authentication code. Make sure to log in using the account that has access to the subscription you provided in above step ![Signin](/images/signin.png)
 * Script execution could take upto 15 minutes to deploy all the artifacts. It is possible that in some remote cases the script would exit prematurely due to request throttling of form recognizer or custom vision service. If this happens then go back to step 3 and rerun deployment, it will  automatically skip the already deployed resources and continue to next one. 
