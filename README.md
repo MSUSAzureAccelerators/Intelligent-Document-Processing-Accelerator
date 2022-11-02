@@ -29,9 +29,9 @@ Many organizations process different format of forms in various format. These fo
 
 ### Step0 - Before you start (Pre-requisites)
 
-These are the key pre-requisites to deploy this solution:
+These are the key pre-requisites to deploy this accelerator:
 1. You need a Microsoft Azure account to create the services used in this accelerator. You can create a [free account](https://azure.microsoft.com/en-us/free/), use your MSDN account, or any other subscription where you have permission to create Azure services.
-2.	PowerShell: The one-command deployment process uses PowerShell to execute all the required activities to get the solution up and running. If you don't have PowerShell, install it from [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6). Direct link to [MSI download](https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi). If you have an older version of Power Shell you will have to update to the latest version.
+2.	PowerShell: The one-command deployment process uses PowerShell to execute all the required activities to get the accelerator up and running. If you don't have PowerShell, install it from [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6). Direct link to [MSI download](https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi). If you have an older version of Power Shell you will have to update to the latest version.
 3.	Request access to Form recognizer.  Form Recognizer is available in a limited-access preview. To get access to the preview, fill out and submit the Form Recognizer [access request form](https://aka.ms/FormRecognizerRequestAccess). Once you have access, you can [create](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_formUnderstandingPreview#create/Microsoft.CognitiveServicesFormRecognizer) the form recognizer service
 
 ### Step1 - Environment Setup
@@ -65,7 +65,7 @@ Loan agreement | Sample Loan agreement contract
 #### Adding custom Dataset
  
 To add your own custom data set for training the models 
-* Create a folder inside <path to extracted folder>\deploy\formstrain\ with a meaningful name. The folder names a further reflected in blob storage so using a meaningful name would help you navigate through the solution better. ( Avoid using special characters or spaces in the folder name.)
+* Create a folder inside <path to extracted folder>\deploy\formstrain\ with a meaningful name. The folder names a further reflected in blob storage so using a meaningful name would help you navigate through the accelerator solution better. ( Avoid using special characters or spaces in the folder name.)
 * If your forms have multiple pages break the pdf into separate pages.
 * Under the newly created folder, create a separate folder for each page named page1, page2, etc. Add the pages to relevant folder. 
 * Add at least 5 sets of sample data for an optimum training of cognitive models. 
@@ -125,7 +125,7 @@ To add your own custom data set for training the models
  
 * Retrieve the unique name provided at the start of the script and create the URI by appending the web app postfix. <uniquname>webapp.azure.websites.net. There is no space between the uniquename and webapp. Open this uri from the browser. 
 * All the data from the forms added in e2etest folder can be searched using the search tab and you can also look at key phrases locations and organizations.
-* Alternatively, This solution allows you to upload files through its web interface, with 2 limitations: files up to 30 MB and up to 10 files at a time.
+* Alternatively, This accelerator allows you to upload files through its web interface, with 2 limitations: files up to 30 MB and up to 10 files at a time.
 * Also, This accelerator allows you to send the email (currently it is filtering emails with subject msrpa ) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
 * The cognitive search pipeline runs every 5 minutes so you might have to wait a few minutes before the data shows up on the webapp. 
 * You can also verify and look at the processed data in the cosmosDb container “formentities”  on the Azure portal.
@@ -133,7 +133,7 @@ To add your own custom data set for training the models
 
 #### Note
  
-Custom UI is part of our [Knowledge Mining Solution Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search!.  Additional Reference :
+Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search!.  Additional Reference :
 * [KMA Demos Homepage](http://aka.ms/kma)
 * [KMA Source Code](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma/src)
 * [KMA 1-Click Deployment](https://aka.ms/kmadeployment)
