@@ -126,7 +126,7 @@ To add your own custom data set for training the models
 * Retrieve the unique name provided at the start of the script and create the URI by appending the web app postfix. <uniquname>webapp.azure.websites.net. There is no space between the uniquename and webapp. Open this uri from the browser. 
 * All the data from the forms added in e2etest folder can be searched using the search tab and you can also look at key phrases locations and organizations.
 * Alternatively, This accelerator allows you to upload files through its web interface, with 2 limitations: files up to 30 MB and up to 10 files at a time.
-* Also, This accelerator allows you to send the email (currently it is filtering emails with subject msrpa ) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
+* Also, This accelerator allows you to send the email (currently it is filtering emails with subject msrpa) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
 * The cognitive search pipeline runs every 5 minutes so you might have to wait a few minutes before the data shows up on the webapp. 
 * You can also verify and look at the processed data in the cosmosDb container “formentities”  on the Azure portal.
 
