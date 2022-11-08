@@ -27,14 +27,14 @@ Many organizations process huge volumes of diverse documents in various formats.
 
 ## Deployment
 
-### Step0 - Before you start (Pre-requisites)
+### Step 0 - Before you start (Pre-requisites)
 
 These are the key pre-requisites to deploy this accelerator:
 1. You need a Microsoft Azure account to create the services used in this accelerator. You can create a [free account](https://azure.microsoft.com/en-us/free/), use your MSDN account, or any other subscription where you have permission to create Azure services.
 2.	PowerShell: The one-command deployment process uses PowerShell to execute all the required activities to get the accelerator up and running. If you don't have PowerShell, install it from [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6). Direct link to [MSI download](https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi). If you have an older version of Power Shell you will have to update to the latest version.
 3.	Request access to Form recognizer.  Form Recognizer is available in a limited-access preview. To get access to the preview, fill out and submit the Form Recognizer [access request form](https://aka.ms/FormRecognizerRequestAccess). Once you have access, you can [create](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_formUnderstandingPreview#create/Microsoft.CognitiveServicesFormRecognizer) the form recognizer service
 
-### Step1 - Environment Setup
+### Step 1 - Environment Setup
 
 Follow these steps to prepare the deployment:
 * Run the PowerShell terminal as an Administrator
@@ -46,7 +46,7 @@ Follow these steps to prepare the deployment:
   * `Install-Module AzTable -Force`
 * Clone the repo, using [Git for Windows](https://gitforwindows.org/) or any other git app you want. The command is git clone https://github.com/MSUSSolutionAccelerators/Automated-Document-Ingestion-Solution-Accelerator.git
 
-### Step2 - Customization
+### Step 2 - Customization
 
 The demo contains built-in data set for doing a plug and play scenario. However, before you start the deployment, you can customize the accelerator to use the set of forms you would like to demonstrate. You can also skip this step if you do not want to use your own custom data.
 
@@ -73,7 +73,7 @@ To add your own custom data set for training the models
   * ![Custom Data Page](/images/customdatapage.png)
 * To enable end to end testing. Go to <path to extracted folder>\deploy\e2etest\, create a new folder the same as step above with an exact same name and directly add the testing forms inside the newly created folder. 
 
-### Step3 - Deployment
+### Step 3 - Deployment
  
 * Run the PowerShell terminal as an Administrator
 * Go to to <path to extracted folder>\deploy\scripts folder
