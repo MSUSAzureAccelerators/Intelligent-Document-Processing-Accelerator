@@ -44,7 +44,7 @@ Follow these steps to prepare the deployment:
   * `Install-Module -Name Az -AllowClobber -Scope AllUsers`
   * `Install-Module -Name Az.Search -AllowClobber -Scope AllUsers`
   * `Install-Module AzTable -Force`
-* Clone the repo, using [Git for Windows](https://gitforwindows.org/) or any other git app you want. The command is git clone https://github.com/MSUSSolutionAccelerators/Automated-Document-Ingestion-Solution-Accelerator.git
+* Clone the repo, using [Git for Windows](https://gitforwindows.org/) or any other git app you want. The command is git clone https://github.com/MSUSAzureAccelerators/Automated-Document-Ingestion-Accelerator.git
 
 ### Step 2 - Customization
 
