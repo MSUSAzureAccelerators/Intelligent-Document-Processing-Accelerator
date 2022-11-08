@@ -133,7 +133,7 @@ To add your own custom data set for training the models
 
 #### Note
  
-Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search.  Additional Reference:
+Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma), an open source end-to-end application that enables you to try the latest features of Azure Cognitive Search. Additional References:
 * [KMA Demos Homepage](http://aka.ms/kma)
 * [KMA Source Code](https://github.com/Azure/AIPlatform/tree/master/end-to-end-solutions/kma/src)
 * [KMA 1-Click Deployment](https://aka.ms/kmadeployment)
