@@ -1,6 +1,6 @@
 ![MSUS Solution Accelerator](./images/MSUS%20Solution%20Accelerator%20Banner%20Two_981.png)
 
-# Intelligent Document Processing Accelerator
+# Intelligent Document Processing / Document Process Automation Accelerator
 
 Many organizations process huge volumes of diverse documents in various formats. These forms go through a manual entry process to extract all the relevant information before the data can be used by software applications. The manual process is costly, adds time and is a often error-prone practice. The accelerator described here demonstrates how organizations can use Azure cognitive services to completely automate the data extraction and entry from pdf forms, highlighting the usage of the  **Form Recognizer** and **Azure Cognitive Search**. The pattern and template is data agnostic (i.e., it can be easily customized to work on a custom set of forms as required by a POC, MVP or a demo). The demo scales well through different kinds of forms and supports multiple page forms. 
 
