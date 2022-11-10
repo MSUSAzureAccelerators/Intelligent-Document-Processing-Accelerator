@@ -2,7 +2,7 @@
 
 # Intelligent Document Processing / Document Process Automation Accelerator
 
-Many organizations process huge volumes of diverse documents in various formats. These forms go through a manual entry process to extract all the relevant information before the data can be used by software applications. The manual process is costly, adds time and is a often error-prone practice. The accelerator described here demonstrates how organizations can use Azure cognitive services to completely automate the data extraction and entry from pdf forms, highlighting the usage of the  **Form Recognizer** and **Azure Cognitive Search**. The pattern and template is data agnostic (i.e., it can be easily customized to work on a custom set of forms as required by a POC, MVP or a demo). The demo scales well through different kinds of forms and supports multiple page forms. 
+Many organizations process huge volumes of diverse documents in various formats. These forms go through a manual entry process to extract all the relevant information before the data can be used by software applications. The manual process is costly, adds time and is a often error-prone practice. The accelerator described here demonstrates how organizations can use Azure cognitive services to completely automate the data extraction and entry from pdf forms by highlighting the usage of  **Form Recognizer** and **Azure Cognitive Search**. The pattern and template is data agnostic (i.e., it can be easily customized to work on a custom set of forms as required by a POC, MVP or a demo). The demo scales well through different kinds of forms and supports multiple page forms. 
 
 ## Architecture
 
@@ -32,14 +32,14 @@ Many organizations process huge volumes of diverse documents in various formats.
 These are the key pre-requisites to deploy this accelerator:
 1. You need a Microsoft Azure account to create the services used in this accelerator. You can create a [free account](https://azure.microsoft.com/en-us/free/), use your MSDN account, or any other subscription where you have permission to create Azure services.
 2.	PowerShell: The one-command deployment process uses PowerShell to execute all the required activities to get the accelerator up and running. If you don't have PowerShell, install it from [here](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-windows-powershell?view=powershell-6). Direct link to [MSI download](https://github.com/PowerShell/PowerShell/releases/download/v6.2.3/PowerShell-6.2.3-win-x64.msi). If you have an older version of Power Shell you will have to update to the latest version.
-3.	Request access to Form recognizer.  Form Recognizer is available in a limited-access preview. To get access to the preview, fill out and submit the Form Recognizer [access request form](https://aka.ms/FormRecognizerRequestAccess). Once you have access, you can [create](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_formUnderstandingPreview#create/Microsoft.CognitiveServicesFormRecognizer) the form recognizer service
+3.	Request access to Form recognizer. [Form Recognizer](https://learn.microsoft.com/en-us/azure/applied-ai-services/form-recognizer/overview?view=form-recog-3.0.0) is available in a limited-access preview. Please contact Microsoft to get access to the preview and submit the Form Recognizer. Once you have access, you can [create](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_formUnderstandingPreview#create/Microsoft.CognitiveServicesFormRecognizer) the form recognizer service.
 
 ### Step 1 - Environment Setup
 
 Follow these steps to prepare the deployment:
 * Run the PowerShell terminal as an Administrator
 * Set the priorities running (every time you restart the PowerShell)
-  `Set-ExecutionPolicy -ExecutionPolicy unrestricted`.  (Choose "A", to change the policy to Yes to All)
+  `Set-ExecutionPolicy -ExecutionPolicy unrestricted`. (Choose "A", to change the policy to Yes to All)
 * Install following Azure Module (one-time)
   * `Install-Module -Name Az -AllowClobber -Scope AllUsers`
   * `Install-Module -Name Az.Search -AllowClobber -Scope AllUsers`
@@ -123,7 +123,7 @@ To add your own custom data set for training the models
 
 ## Testing
  
-* Retrieve the unique name provided at the start of the script and create the URI by appending the web app postfix. <uniquname>webapp.azure.websites.net. There is no space between the uniquename and webapp. Open this uri from the browser. 
+* Retrieve the unique name provided at the start of the script and create the URI by appending the web app postfix. <uniquname>webapp.azure.websites.net. There is no space between the uniquename and webapp. Open the uri from the browser. 
 * All the data from the forms added in e2etest folder can be searched using the search tab and you can also look at key phrases locations and organizations.
 * Alternatively, this accelerator allows you to upload files through its web interface, with 2 limitations: files up to 30 MB and up to 10 files at a time.
 * This accelerator allows you to send the email (currently it is filtering emails with subject msrpa) to your office365 authenticated connections inbox folder. To test this path send one form of any of the trained categories with a subject name msrpa to the email address associated with the Azure subscription used. 
@@ -143,8 +143,7 @@ Custom UI is part of our [Knowledge Mining Accelerator](https://github.com/Azure
  
 [Shekhar Kumar](https://github.com/shkumar64)
 
- ## License
-
+## License
 Copyright (c) Microsoft Corporation
 
 All rights reserved.
@@ -156,6 +155,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+
 
 ## Contributing
 
@@ -173,8 +173,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks or logos is subject to and must follow 
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
